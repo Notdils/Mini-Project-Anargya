@@ -1,6 +1,7 @@
 import "./base.css";
 import "./home.css";
 import { onLang } from "./i18n";
+import "./parallax"; // section "Ride the Infinity" (Z fly-through)
 
 // ---------- palet per waktu (keyframe: pagi p=0, siang p=0.5, malam p=1) ----------
 type Palette = Record<string, string>;

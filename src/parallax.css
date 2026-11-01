@@ -1,0 +1,88 @@
+/* ---------- Z fly-through (section "Ride the Infinity") ---------- */
+.mp {
+  position: relative;
+  /* tanpa script: satu layar statis */
+  height: 100vh;
+  background: var(--dark);
+  color: var(--cream);
+}
+.mp--live {
+  height: var(--mp-length, 350vh);
+}
+.mp__stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  /* blend headline tidak bocor keluar scene; stage TIDAK boleh punya background
+     (background ada di .mp), supaya teks di area kosong tetap warna aslinya */
+  isolation: isolate;
+}
+.mp__title {
+  position: relative;
+  /* selalu di atas semua objek; difference = warna negatif di bagian yang dilintasi objek */
+  z-index: 1000;
+  mix-blend-mode: difference;
+  margin: 0;
+  padding: 0 var(--gutter);
+  font: 900 clamp(2.5rem, 7.5vw, 8rem) / 1 var(--sans);
+  letter-spacing: -0.04em;
+  text-align: center;
+}
+.mp__word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+}
+.mp__word > span {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* origin di pojok kiri atas stage; script memberi translate + scale hasil proyeksi */
+.mp__obj,
+.mp__plane {
+  position: absolute;
+  left: 0;
+  top: 0;
+  translate: -50% -50%;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform, opacity;
+  opacity: 0;
+}
+.mp__plane {
+  overflow: visible;
+}
+.mp__obj[data-mark] {
+  overflow: visible;
+}
+.mp__plane path,
+.mp__plane circle {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  opacity: 0.22;
+  vector-effect: non-scaling-stroke;
+}
+
+@media (max-width: 768px) {
+  .mp {
+    --mp-length: 250vh;
+  }
+  .mp__obj[data-mobile="hide"],
+  .mp__plane[data-mobile="hide"] {
+    display: none;
+  }
+}
+/* gerak maju ke arah kamera adalah gerak besar: saat reduced motion tampil statis satu layar */
+@media (prefers-reduced-motion: reduce) {
+  .mp--live {
+    height: 100vh;
+  }
+}

@@ -38,7 +38,9 @@ Website satu halaman untuk Anargya ITS EV Team di GIIAS Bali 2027 (27–31 Janua
 - **Parallax dari waktu**: selama scroll, layer dekat bergeser lebih jauh dari layer jauh. Tidak ada parallax lain di halaman.
 - **Teks berganti per fase** (pagi, siang, malam) di 33% dan 66% scroll, dengan crossfade singkat.
 - **Riak laut**: filter SVG di laut dekat, hanya berjalan saat hero terlihat.
-- Akhir hero menyatu ke section gelap: About, GIIAS Bali, link ke toko.
+- Akhir hero menyatu ke section gelap: About, GIIAS Bali, **"Ride the Infinity"**, link ke toko.
+- **"Ride the Infinity"** (`src/parallax.ts`, `src/parallax.css`): section Z fly-through 350vh (mobile 250vh). Headline diam di tengah, kamera maju mengikuti scroll, 7 gantungan kunci (`public/img/mp/`) + 2 lambang Anargya muncul kecil dari tengah lalu membesar dan lewat di samping kamera; line-art lambang Anargya raksasa. Tiap objek miring sendiri (`data-tilt`), diurutkan menurut kedalaman, headline selalu di depan dengan warna negatif (`mix-blend-mode: difference`) di bagian yang dilintasi objek. Di desktop, mouse menggeser kamera sedikit (`data-mp-mouse`, mati di layar sentuh & reduced motion). Posisi tiap objek diatur di `index.html` lewat `data-x / data-y / data-z / data-size / data-tilt`, rasa scene lewat `data-mp-*` di `<section>`. Reduced motion: satu layar statis.
+- **Lambang Anargya algoritmik** (`src/mark.ts`): dua untai dari kurva kosinus (hijau melengkung ke bawah, merah ke atas, bersilangan di t = ±0.5, ekor datar di luar ±1), tebal meruncing ke ujung. `<svg data-mark="line">` = garis tipis, `<svg data-mark="fill">` = pita berwarna dengan tepi krem. Ini dekorasi, bukan file logo resmi.
 - Indikator di kanan (Morning / Midday / Night) bisa diklik untuk lompat ke fase.
 - Logo GIIAS Bali (`public/img/giias-bali-2027.png`, hanya versi hitam) tampil di badge "Exhibiting at / Hadir di" saat pagi & siang, dan hilang saat malam.
 - `prefers-reduced-motion` (mis. Windows → Accessibility → Visual effects → *Animation effects* mati): cerita pagi → malam tetap jalan karena digerakkan scroll pengunjung sendiri; yang dimatikan hanya parallax, riak laut, dan efek mengejar. Mobile: hero 360vh.
@@ -78,6 +80,9 @@ Website satu halaman untuk Anargya ITS EV Team di GIIAS Bali 2027 (27–31 Janua
 │   ├── base.css        # font, warna, tombol, nav, footer
 │   ├── home.ts         # scroll pagi → malam, riak laut
 │   ├── home.css
+│   ├── parallax.ts     # section "Ride the Infinity" (Z fly-through)
+│   ├── parallax.css
+│   ├── mark.ts         # lambang Anargya digambar dari kurva (SVG)
 │   ├── shop.ts         # render produk, tas belanja, checkout
 │   ├── shop.css
 │   └── products.ts     # data produk, dana, nomor WhatsApp

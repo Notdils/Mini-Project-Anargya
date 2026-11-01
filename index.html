@@ -191,6 +191,35 @@
         </div>
       </section>
 
+      <!-- Z fly-through: kamera maju, gantungan kunci muncul kecil dari tengah lalu lewat di samping kamera.
+           Posisi tiap objek: data-x/y (fraksi setengah layar), data-z (jarak), data-size (% sisi terpanjang),
+           data-tilt (derajat, tetap). Lambang Anargya (data-mark) digambar oleh src/mark.ts. -->
+      <section class="mp" data-mp data-mp-travel="3700" aria-labelledby="mp-title">
+        <div class="mp__stage">
+          <!-- line-art: lambang Anargya raksasa yang dilewati kamera -->
+          <svg class="mp__plane" data-mark="line" data-x="0" data-y="0" data-z="3050" data-size="70" aria-hidden="true"></svg>
+
+          <h2 class="mp__title" id="mp-title" aria-label="Ride the Infinity">
+            <span class="mp__word" aria-hidden="true"><span>Ride</span></span>
+            <span class="mp__word" aria-hidden="true"><span>the</span></span>
+            <span class="mp__word" aria-hidden="true"><span>Infinity</span></span>
+          </h2>
+
+          <!-- gelombang 1: pembuka, objek besar -->
+          <img class="mp__obj" src="/img/mp/car-side.webp" alt="" decoding="async" data-x="-0.5" data-y="-0.45" data-z="1700" data-size="15" data-tilt="-6" />
+          <img class="mp__obj" src="/img/mp/e07.webp" alt="" decoding="async" data-x="0.55" data-y="0.42" data-z="1950" data-size="12" data-tilt="3" />
+          <svg class="mp__obj" data-mark="fill" data-x="0.22" data-y="-0.62" data-z="2250" data-size="6" data-tilt="-11" data-mobile="hide" aria-hidden="true"></svg>
+          <!-- gelombang 2: Always Energized melintasi headline -->
+          <img class="mp__obj" src="/img/mp/energized.webp" alt="" decoding="async" data-x="-0.62" data-y="0.03" data-z="2600" data-size="12" data-tilt="-13" />
+          <img class="mp__obj" src="/img/mp/chibi.webp" alt="" decoding="async" data-x="0.48" data-y="-0.38" data-z="2850" data-size="8" data-tilt="15" />
+          <img class="mp__obj" src="/img/mp/helmet.webp" alt="" decoding="async" data-x="-0.3" data-y="0.58" data-z="3350" data-size="8" data-tilt="-17" />
+          <!-- gelombang 3: menutup fase keluar headline -->
+          <svg class="mp__obj" data-mark="fill" data-x="-0.6" data-y="0.22" data-z="3700" data-size="7" data-tilt="12" data-mobile="hide" aria-hidden="true"></svg>
+          <img class="mp__obj" src="/img/mp/logo.webp" alt="" decoding="async" data-x="-0.32" data-y="-0.52" data-z="3950" data-size="9" data-tilt="1" />
+          <img class="mp__obj" src="/img/mp/frame.webp" alt="" decoding="async" data-x="0.4" data-y="0.45" data-z="4050" data-size="7" data-tilt="8" data-mobile="hide" />
+        </div>
+      </section>
+
       <section class="sheet sheet--link">
         <p class="sheet__label" data-t="link.label">03&nbsp;&nbsp;Bali Edition</p>
         <div class="sheet__content sheet__content--row">
