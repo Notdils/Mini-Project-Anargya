@@ -132,7 +132,9 @@ function render(p: number) {
   glint.style.opacity = String(onMoon ? span(p, 0.8, 0.95) : 1 - span(p, 0.65, 0.75));
 
   // parallax dari waktu: layer dekat turun lebih jauh
-  for (const l of layers) l.style.transform = `translateY(${(Number(l.dataset.depth) * p * 40).toFixed(1)}px)`;
+  // (dimatikan saat reduced motion: parallax adalah gerak yang paling sering bikin pusing)
+  const px = reduced.matches ? 0 : 40;
+  for (const l of layers) l.style.transform = `translateY(${(Number(l.dataset.depth) * p * px).toFixed(1)}px)`;
 
   // kart (menghadap kiri) menyusuri pantai dari kanan ke kiri seiring hari;
   // di layar portrait jaraknya dirapatkan ke tengah seperti matahari
@@ -174,6 +176,12 @@ function tick(now: number) {
 }
 function follow() {
   target = timeOf(progress());
+  // reduced motion: tanpa efek mengejar, waktu langsung mengikuti posisi scroll
+  if (reduced.matches) {
+    shown = target;
+    render(shown);
+    return;
+  }
   if (!running && shown !== target) {
     running = true;
     last = 0;
@@ -193,7 +201,7 @@ function onScroll() {
   requestAnimationFrame(() => {
     queued = false;
     nav.classList.toggle("is-solid", hero.getBoundingClientRect().bottom <= nav.offsetHeight);
-    if (!reduced.matches) follow();
+    follow();
   });
 }
 
@@ -219,7 +227,7 @@ function ripple(t: number) {
 }
 
 measureText();
-shown = target = reduced.matches ? 0 : timeOf(progress());
+shown = target = timeOf(progress());
 render(shown);
 document.fonts.ready.then(onResize);
 addEventListener("scroll", onScroll, { passive: true });
@@ -229,8 +237,5 @@ onLang(() => {
   measureText();
   render(shown);
 });
-reduced.addEventListener("change", () => {
-  shown = target = reduced.matches ? 0 : timeOf(progress());
-  render(shown);
-});
+reduced.addEventListener("change", () => render(shown));
 requestAnimationFrame(ripple);

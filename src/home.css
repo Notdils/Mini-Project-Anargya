@@ -130,7 +130,8 @@
   font: 500 16px/1.4 var(--sans);
 }
 .phase__title {
-  font: 900 clamp(48px, 8vw, 100px) / 0.95 var(--sans);
+  /* ikut tinggi layar juga, supaya di laptop pendek teks tidak turun ke gunung/laut */
+  font: 900 clamp(40px, min(8vw, 10.5vh), 100px) / 0.95 var(--sans);
   letter-spacing: -0.035em;
   text-wrap: balance;
 }
@@ -348,13 +349,22 @@
 }
 
 /* reduced motion: no pin, static morning, no ripple */
+@media (max-height: 820px) and (min-width: 761px) {
+  .hero__copy {
+    inset-block-start: 88px;
+  }
+  .hero__badge {
+    margin-bottom: 12px;
+  }
+  .phase {
+    gap: 12px;
+  }
+}
+
+/* Reduced motion (mis. Windows "Animation effects" mati): cerita pagi → malam tetap jalan
+   karena digerakkan oleh scroll pengunjung sendiri; yang dimatikan hanya gerak tambahan:
+   riak laut, parallax (di home.ts), dan efek mengejar/transisi. */
 @media (prefers-reduced-motion: reduce) {
-  .hero {
-    height: auto;
-  }
-  .hero__stick {
-    position: relative;
-  }
   .ripple {
     filter: none;
   }

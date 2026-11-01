@@ -41,7 +41,8 @@ Website satu halaman untuk Anargya ITS EV Team di GIIAS Bali 2027 (27–31 Janua
 - Akhir hero menyatu ke section gelap: About, GIIAS Bali, link ke toko.
 - Indikator di kanan (Morning / Midday / Night) bisa diklik untuk lompat ke fase.
 - Logo GIIAS Bali (`public/img/giias-bali-2027.png`, hanya versi hitam) tampil di badge "Exhibiting at / Hadir di" saat pagi & siang, dan hilang saat malam.
-- `prefers-reduced-motion`: tanpa pin, tanpa riak, hero statis versi pagi. Mobile: hero 360vh.
+- `prefers-reduced-motion` (mis. Windows → Accessibility → Visual effects → *Animation effects* mati): cerita pagi → malam tetap jalan karena digerakkan scroll pengunjung sendiri; yang dimatikan hanya parallax, riak laut, dan efek mengejar. Mobile: hero 360vh.
+- Layar pendek (tinggi ≤ 820px, laptop 1366×768 dll.): judul hero mengecil mengikuti tinggi layar supaya teks tidak turun ke gunung/laut.
 
 ### Toko (`shop/index.html`, `src/shop.ts`, `src/shop.css`, `src/products.ts`)
 - Halaman berupa lapak pantai: atap jerami, papan nama, kanopi garis hijau, kaos digantung di rel, gantungan kunci di kait, aksesori di rak.
