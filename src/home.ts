@@ -30,6 +30,7 @@ const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
 const span = (p: number, a: number, b: number) => clamp01((p - a) / (b - a));
 
 const hero = document.getElementById("hero")!;
+hero.classList.add("hero--live"); // panjang 500vh hanya kalau script ini benar-benar jalan
 const sun = document.getElementById("sun")!;
 const moon = document.getElementById("moon")!;
 const glint = document.getElementById("glint")!;

@@ -28,7 +28,9 @@
   --palm: #1e3a31;
   --kart: #1e3a31;
   --ink: #fff8ec;
-  height: 500vh;
+  /* tanpa script (JS mati / gagal dimuat): hero satu layar statis versi pagi,
+     supaya pengunjung tidak scroll 4 layar menatap gambar beku */
+  height: 100vh;
   position: relative;
   color: var(--ink);
 }
@@ -321,8 +323,12 @@
   }
 }
 
+/* script jalan (home.ts menambah .hero--live): hero dipanjangkan untuk cerita pagi → malam */
+.hero--live {
+  height: 500vh;
+}
 @media (max-width: 760px) {
-  .hero {
+  .hero--live {
     height: 360vh;
   }
   .hero__copy {
