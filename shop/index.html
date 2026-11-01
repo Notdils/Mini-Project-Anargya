@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en" data-t-title="shop.title" data-t-desc="shop.desc">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bali Edition shop · Anargya</title>
+    <meta name="description" content="Bali Edition tees, hats and accessories from Anargya ITS EV Team at GIIAS Bali 2027. Every sale helps fund the 2027 season." />
+    <link rel="icon" href="/img/logo.png" />
+  </head>
+  <body class="shop">
+    <header class="nav nav--dark">
+      <a class="nav__brand" href="/">Anargya</a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="/#about" data-t="nav.about">About</a>
+        <a href="/#giias" data-t="nav.giias">GIIAS Bali</a>
+        <a href="/shop/" aria-current="page" data-t="nav.shop">Shop</a>
+      </nav>
+      <div class="nav__end">
+        <div class="lang" role="group" aria-label="Language" data-t-aria-label="nav.lang">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="id" aria-pressed="false">ID</button>
+        </div>
+        <a class="btn btn--green" href="#bag" id="nav-bag">Bag · 0</a>
+      </div>
+    </header>
+
+    <main>
+      <div class="shack">
+        <svg class="shack__roof" viewBox="0 0 1280 150" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <div class="shack__fascia">
+          <h1 class="shack__sign">Anargya</h1>
+          <p class="shack__sub">
+            <span data-t="shop.sub1">Bali Edition stall · GIIAS Bali 2027</span>
+            <span data-t="shop.sub2">Every sale helps fund the 2027 season</span>
+          </p>
+        </div>
+        <svg class="shack__awning" aria-hidden="true">
+          <defs>
+            <pattern id="stripe" width="120" height="64" patternUnits="userSpaceOnUse">
+              <rect width="60" height="34" fill="#29d970" />
+              <path d="M0 34A30 30 0 0 0 60 34Z" fill="#29d970" />
+              <rect x="60" width="60" height="34" fill="#f4efe6" />
+              <path d="M60 34A30 30 0 0 0 120 34Z" fill="#f4efe6" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="64" fill="url(#stripe)" />
+        </svg>
+
+        <div class="shack__wall">
+          <section class="rail" aria-labelledby="rail-title">
+            <h2 class="wall-label" id="rail-title" data-t="shop.rail">On the rail · Apparel</h2>
+            <ul class="products products--rail" id="rail"></ul>
+          </section>
+          <section class="hooks" aria-labelledby="hooks-title">
+            <h2 class="wall-label" id="hooks-title" data-t="shop.hooks">On the hooks · Keychains</h2>
+            <ul class="products products--hooks" id="hooks"></ul>
+          </section>
+          <section class="shelf" aria-labelledby="shelf-title">
+            <h2 class="wall-label" id="shelf-title" data-t="shop.shelf">On the shelf · Accessories</h2>
+            <ul class="products products--shelf" id="shelf"></ul>
+          </section>
+        </div>
+      </div>
+
+      <section class="counter">
+        <div class="chalk">
+          <h2 class="chalk__title" data-t="chalk.title">How to buy</h2>
+          <ol class="chalk__steps">
+            <li data-t="chalk.1">Pick a size, add it to your bag</li>
+            <li data-t="chalk.2">Pay by QRIS or bank transfer</li>
+            <li data-t="chalk.3">Collect at our booth, 27–31 January at The Meru Sanur, or ship within Indonesia, 2–5 days</li>
+          </ol>
+          <h3 class="chalk__sub" data-t="chalk.fund">Season fund</h3>
+          <p class="chalk__fund" id="fund"></p>
+          <div class="chalk__bar"><span id="fund-bar"></span></div>
+          <p class="chalk__note" data-t="chalk.note">Battery cells, tyres and travel for the 2027 season.</p>
+        </div>
+
+        <aside class="receipt" id="bag" aria-labelledby="bag-title">
+          <div class="receipt__paper">
+            <h2 class="receipt__title" id="bag-title" data-t="bag.title">Your bag</h2>
+            <ul class="receipt__lines" id="lines"></ul>
+            <p class="receipt__empty" id="empty" data-t="bag.empty">Your bag is empty. Pick something off the rail.</p>
+            <fieldset class="receipt__delivery">
+              <legend data-t="bag.delivery">Delivery</legend>
+              <label><input type="radio" name="delivery" value="pickup" checked /> <span><b data-t="bag.pickup">Pick up at our booth</b><small data-t="bag.pickupNote">Free · 27–31 Jan, The Meru Sanur</small></span></label>
+              <label><input type="radio" name="delivery" value="ship" /> <span><b data-t="bag.ship">Ship within Indonesia</b><small data-t="bag.shipNote">From Rp 18.000 · 2–5 days, confirmed on WhatsApp</small></span></label>
+            </fieldset>
+            <div class="receipt__total"><span data-t="bag.total">Total</span><span id="total">Rp 0</span></div>
+            <p class="receipt__shipnote" id="shipnote" hidden data-t="bag.plusShip">Plus shipping, confirmed on WhatsApp</p>
+            <button class="btn btn--green receipt__checkout" id="checkout" type="button" data-t="bag.checkout">Checkout</button>
+            <p class="receipt__pay" id="paynote">Pay by QRIS or bank transfer</p>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <a class="bagbar" id="bagbar" href="#bag" hidden>
+      <span id="bagbar-text"></span>
+      <span class="bagbar__cta" data-t="bag.view">View bag</span>
+    </a>
+
+    <footer class="footer">
+      <span>Anargya ITS EV Team · Institut Teknologi Sepuluh Nopember, Surabaya</span>
+      <nav aria-label="Social">
+        <a href="#">Instagram</a>
+        <a href="#">Email</a>
+        <a href="#">LinkedIn</a>
+      </nav>
+    </footer>
+
+    <script type="module" src="/src/shop.ts"></script>
+  </body>
+</html>
