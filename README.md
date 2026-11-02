@@ -1,5 +1,7 @@
 # Anargya at GIIAS Bali 2027
 
+> Dokumentasi proyek: [ANARGYA-PROJECTS](ANARGYA-PROJECTS.md) · [CONTEXT](CONTEXT.md) · [PRD](PRD.md) · [DESIGN](DESIGN.md) · [DECISIONS](DECISIONS.md) · [TODO](TODO.md) · [TESTING](TESTING.md) · [HANDOFF-PROMPT](HANDOFF-PROMPT.md)
+
 ## Setup & Menjalankan
 
 ### 1. Prasyarat
@@ -39,7 +41,8 @@ Website satu halaman untuk Anargya ITS EV Team di GIIAS Bali 2027 (27–31 Janua
 - **Teks berganti per fase** (pagi, siang, malam) di 33% dan 66% scroll, dengan crossfade singkat.
 - **Riak laut**: filter SVG di laut dekat, hanya berjalan saat hero terlihat.
 - Akhir hero menyatu ke section gelap: About, GIIAS Bali, **"Ride the Infinity"**, link ke toko.
-- **"Ride the Infinity"** (`src/parallax.ts`, `src/parallax.css`): section Z fly-through 350vh (mobile 250vh). Headline diam di tengah, kamera maju mengikuti scroll, 7 gantungan kunci (`public/img/mp/`) + 2 lambang Anargya muncul kecil dari tengah lalu membesar dan lewat di samping kamera; line-art lambang Anargya raksasa. Tiap objek miring sendiri (`data-tilt`), diurutkan menurut kedalaman, headline selalu di depan dengan warna negatif (`mix-blend-mode: difference`) di bagian yang dilintasi objek. Di desktop, mouse menggeser kamera sedikit (`data-mp-mouse`, mati di layar sentuh & reduced motion). Posisi tiap objek diatur di `index.html` lewat `data-x / data-y / data-z / data-size / data-tilt`, rasa scene lewat `data-mp-*` di `<section>`. Reduced motion: satu layar statis.
+- **"Ride the Infinity"** (`src/parallax.ts`, `src/parallax.css`): section Z fly-through 350vh (mobile 250vh). Headline diam di tengah, kamera maju mengikuti scroll, 7 gantungan kunci (`public/img/mp/`) + 2 lambang Anargya muncul kecil dari tengah lalu membesar dan lewat di samping kamera; line-art lambang Anargya raksasa. Tiap objek miring sendiri (`data-tilt`), diurutkan menurut kedalaman, headline selalu di depan dengan warna negatif (`mix-blend-mode: difference`) di bagian yang dilintasi objek. Di desktop, mouse menggeser kamera sedikit (`data-mp-mouse`, mati di layar sentuh & reduced motion). Posisi tiap objek diatur di `index.html` lewat `data-x / data-y / data-z / data-size / data-tilt`, rasa scene lewat `data-mp-*` di `<section>`. Reduced motion (mis. *Animation effects* Windows mati): tanpa fly-through, objek disusun rapi menurut `data-static="x y size tilt"` di tiap objek: baris atas dua mobil mengapit logo, lambang Anargya mengapit headline, baris bawah tiga gantungan kunci. Atribut ini tidak dipakai saat animasi berjalan; objek tanpa `data-static` tidak tampil di susunan statis.
+- **Merch pilihan (section 03)**: 4 kartu dari `src/products.ts` (`FEATURED` di `src/home.ts`), link ke `/shop/`, lalu tombol "Visit the shop". Di desktop, kursor berupa titik krem yang melebar jadi pil hijau "View in shop ↗" di atas foto (`src/cursor.ts`, `src/cursor.css`, elemen `.cc` di akhir `index.html`; zona = elemen ber-`data-cta`). Kursor native tetap ada. Layar sentuh & fokus keyboard: chip statis di pojok foto. Reduced motion: pil langsung terbuka tanpa gulungan teks.
 - **Lambang Anargya algoritmik** (`src/mark.ts`): dua untai dari kurva kosinus (hijau melengkung ke bawah, merah ke atas, bersilangan di t = ±0.5, ekor datar di luar ±1), tebal meruncing ke ujung. `<svg data-mark="line">` = garis tipis, `<svg data-mark="fill">` = pita berwarna dengan tepi krem. Ini dekorasi, bukan file logo resmi.
 - Indikator di kanan (Morning / Midday / Night) bisa diklik untuk lompat ke fase.
 - Logo GIIAS Bali (`public/img/giias-bali-2027.png`, hanya versi hitam) tampil di badge "Exhibiting at / Hadir di" saat pagi & siang, dan hilang saat malam.
@@ -82,9 +85,12 @@ Website satu halaman untuk Anargya ITS EV Team di GIIAS Bali 2027 (27–31 Janua
 │   ├── home.css
 │   ├── parallax.ts     # section "Ride the Infinity" (Z fly-through)
 │   ├── parallax.css
+│   ├── cursor.ts       # kursor CTA titik → pil (kartu merch)
+│   ├── cursor.css
 │   ├── mark.ts         # lambang Anargya digambar dari kurva (SVG)
 │   ├── shop.ts         # render produk, tas belanja, checkout
 │   ├── shop.css
 │   └── products.ts     # data produk, dana, nomor WhatsApp
-└── vite.config.ts      # konfigurasi 2 halaman
+├── vite.config.ts      # konfigurasi 2 halaman
+└── *.md                # ANARGYA-PROJECTS, CONTEXT, PRD, DESIGN, DECISIONS, TODO, TESTING, HANDOFF-PROMPT
 ```

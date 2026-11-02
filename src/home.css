@@ -206,7 +206,105 @@
   background: var(--dark-2);
 }
 .sheet--link {
-  padding-block: 64px;
+  padding-block: 88px;
+}
+
+/* ---------- merch pilihan + kursor CTA ---------- */
+.merch {
+  gap: 32px;
+  max-width: none;
+}
+.merch__head {
+  display: grid;
+  gap: 6px;
+}
+.merch__sub {
+  margin: 0;
+  color: rgb(236 229 216 / 0.7);
+}
+.merch__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.feat {
+  display: grid;
+  gap: 12px;
+  color: inherit;
+  text-decoration: none;
+}
+.feat__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--dark-2);
+}
+.feat__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: scale 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.feat__media--cutout img {
+  padding: 14%;
+  object-fit: contain;
+}
+.feat:hover .feat__media img {
+  scale: 1.04;
+}
+/* fallback CTA: keyboard dan layar sentuh (kursor kustom tidak ada di sana) */
+.feat__chip {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--green);
+  color: var(--green-ink);
+  font: 600 13px/1.2 var(--sans);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.feat:focus-visible .feat__chip {
+  opacity: 1;
+}
+@media (hover: none), (pointer: coarse) {
+  .feat__chip {
+    opacity: 1;
+  }
+}
+.feat__meta {
+  display: grid;
+  gap: 2px;
+  font-size: 15px;
+}
+.feat__price {
+  font: 500 14px/1.55 var(--mono);
+  color: rgb(236 229 216 / 0.7);
+  white-space: nowrap;
+}
+@media (max-width: 960px) {
+  .merch__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 480px) {
+  .merch__grid {
+    gap: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .feat__media img {
+    transition: none;
+  }
 }
 .sheet__label {
   padding-right: 24px;

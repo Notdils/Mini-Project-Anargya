@@ -78,7 +78,10 @@ const DICT = {
   "giias.directions": { en: "Get directions", id: "Petunjuk arah" },
 
   "link.label": { en: `03${NB}${NB}Bali Edition`, id: `03${NB}${NB}Bali Edition` },
-  "link.title": { en: "Nine pieces that fund the 2027 season", id: "Sembilan barang yang mendanai musim 2027" },
+  "link.title": { en: "Bali Edition merch", id: "Merch Bali Edition" },
+  "link.sub": { en: "Every piece funds the 2027 car.", id: "Setiap barang mendanai mobil 2027." },
+  "link.cta": { en: "View in shop", id: "Lihat di toko" },
+  "cta.visit": { en: "Visit the shop", id: "Kunjungi toko" },
 
   // ---------- toko ----------
   "shop.title": { en: "Bali Edition shop · Anargya", id: "Toko Bali Edition · Anargya" },

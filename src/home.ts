@@ -1,7 +1,9 @@
 import "./base.css";
 import "./home.css";
-import { onLang } from "./i18n";
+import { onLang, t, lang } from "./i18n";
+import { PRODUCTS, rupiah } from "./products";
 import "./parallax"; // section "Ride the Infinity" (Z fly-through)
+import "./cursor"; // kursor CTA di kartu merch
 
 // ---------- palet per waktu (keyframe: pagi p=0, siang p=0.5, malam p=1) ----------
 type Palette = Record<string, string>;
@@ -241,3 +243,22 @@ onLang(() => {
 });
 reduced.addEventListener("change", () => render(shown));
 requestAnimationFrame(ripple);
+
+// ---------- merch pilihan (section 03): data dari products.ts, kartu ke /shop ----------
+const FEATURED = ["tee-night", "tee-sand", "keychain-chibi", "keychain-e21"];
+const merch = document.getElementById("merch-grid")!;
+const arrow = `<svg viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M2 10 10 2M4 2h6v6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>`;
+onLang(() => {
+  const cta = t("link.cta");
+  merch.innerHTML = FEATURED.map((id) => PRODUCTS.find((p) => p.id === id)!)
+    .map(
+      (p) => `<li><a class="feat" href="/shop/" aria-label="${p.name[lang]}, ${rupiah(p.price)}. ${cta}">
+        <div class="feat__media${p.cutout ? " feat__media--cutout" : ""}" data-cta="${cta}">
+          <img src="${p.img}" alt="" loading="lazy" decoding="async" />
+          <span class="feat__chip" aria-hidden="true">${cta} ${arrow}</span>
+        </div>
+        <div class="feat__meta"><span>${p.name[lang]}</span><span class="feat__price">${rupiah(p.price)}</span></div>
+      </a></li>`,
+    )
+    .join("");
+});

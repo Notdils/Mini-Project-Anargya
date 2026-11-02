@@ -39,6 +39,8 @@ function scene(section: HTMLElement) {
     plane: el.matches(".mp__plane"),
     tilt: +(el.dataset.tilt ?? 0) || 0, // derajat, tetap selama scroll & gerak mouse
     hidden: false, // disembunyikan CSS (mis. data-mobile="hide"); dicek saat resize, bukan per frame
+    // susunan statis untuk reduced motion: "x y size tilt" (x, y fraksi setengah layar; size % sisi terpanjang)
+    still: el.dataset.static ? el.dataset.static.trim().split(/\s+/).map(Number) : null,
   }));
   let W = 0, H = 0;
   const cam = { mx: 0, my: 0 }; // posisi mouse ter-smooth, −1..1 (0 = tengah)
@@ -48,13 +50,31 @@ function scene(section: HTMLElement) {
     W = stage.clientWidth;
     H = stage.clientHeight;
     const unit = Math.max(W, H) / 100;
+    const stillUnit = Math.min(Math.max(W, H), W * 1.6) / 100; // layar tegak: ukur dari lebar supaya baris tidak berdesakan
     for (const it of items) {
-      it.el.style.width = it.size * unit + "px";
+      it.el.style.width = reduced.matches && it.still ? it.still[2] * stillUnit + "px" : it.size * unit + "px";
       it.hidden = getComputedStyle(it.el).display === "none"; // berlaku juga untuk <svg> (tidak punya offsetParent)
     }
   }
 
+  // Reduced motion: tanpa kamera & tanpa fly-through, objek berbaris rapi menurut data-static.
+  function renderStill() {
+    for (const it of items) {
+      if (it.hidden) continue;
+      if (!it.still) {
+        it.el.style.opacity = "0";
+        continue;
+      }
+      const [x, y, , tilt] = it.still;
+      it.el.style.opacity = "1";
+      it.el.style.transform = `translate(${W / 2 + (x * W) / 2}px, ${H / 2 + (y * H) / 2}px) rotate(${tilt || 0}deg)`;
+      it.el.style.zIndex = it.plane ? "1" : "10";
+    }
+    words.forEach((w) => (w.style.transform = "translateY(0%)"));
+  }
+
   function render(p: number) {
+    if (reduced.matches) return renderStill();
     const camZ = p * travel;
     // intro: belum terlihat apa pun sebelum scroll masuk ke scene, lalu muncul bertahap
     // bersama kata headline (p 0–0.12); handoff: hilang di akhir (p 0.9–1)
@@ -163,6 +183,7 @@ function scene(section: HTMLElement) {
     follow();
   });
   reduced.addEventListener("change", () => {
+    layout(); // lebar objek berbeda antara susunan statis dan animasi
     shown = target = reduced.matches ? staticP : progress();
     render(shown);
   });
