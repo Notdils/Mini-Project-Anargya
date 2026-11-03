@@ -15,14 +15,11 @@ export type Product = {
   sizes?: string[];
 };
 
-const HAT = `<svg viewBox="0 0 200 140" aria-hidden="true"><path d="M60 40Q100 20 140 40L150 92H50Z" fill="#1e2a26"/><ellipse cx="100" cy="98" rx="86" ry="20" fill="#1e2a26"/><path d="M52 80H148L150 92H50Z" fill="#29d970"/></svg>`;
-const TOTE = `<svg viewBox="0 0 200 200" aria-hidden="true"><path d="M70 70C70 20 130 20 130 70" stroke="#c9a56a" stroke-width="8" fill="none"/><rect x="40" y="66" width="120" height="120" rx="6" fill="#1e2a26"/><rect x="40" y="150" width="120" height="10" fill="#29d970"/></svg>`;
-
 export const PRODUCTS: Product[] = [
-  { id: "tee-sand", name: { en: "Bali Edition tee, sand", id: "Kaos Bali Edition, pasir" }, meta: { en: "Combed cotton 24s", id: "Katun combed 24s" }, price: 135000, place: "rail", img: "/img/white-shirt.webp", sizes: ["S", "M", "L", "XL"] },
-  { id: "tee-night", name: { en: "Bali Edition tee, night", id: "Kaos Bali Edition, malam" }, meta: { en: "Combed cotton 24s", id: "Katun combed 24s" }, price: 135000, place: "rail", img: "/img/black-shirt.webp", sizes: ["S", "M", "L", "XL"] },
-  { id: "bucket-hat", name: { en: "Bucket hat", id: "Topi bucket" }, meta: { en: "Canvas, embroidered mark · one size", id: "Kanvas, logo bordir · satu ukuran" }, price: 85000, place: "rail", illus: HAT },
-  { id: "tote", name: { en: "Tote bag", id: "Tas tote" }, meta: { en: "12 oz canvas · 38 × 42 cm", id: "Kanvas 12 oz · 38 × 42 cm" }, price: 65000, place: "shelf", illus: TOTE },
+  { id: "tee-sand", name: { en: "Speed Maniac shirt, white", id: "Kemeja Speed Maniac, putih" }, meta: { en: "Short sleeve · two chest patches", id: "Lengan pendek · dua patch dada" }, price: 135000, place: "rail", img: "/img/shirt-back.webp", cutout: true, sizes: ["S", "M", "L", "XL"] },
+  { id: "shirt-night", name: { en: "Speed Maniac shirt, black", id: "Kemeja Speed Maniac, hitam" }, meta: { en: "Short sleeve · two chest patches", id: "Lengan pendek · dua patch dada" }, price: 135000, place: "rail", img: "/img/shirt-back-night.webp", cutout: true, sizes: ["S", "M", "L", "XL"] },
+  { id: "cap-racing-club", name: { en: "Racing Club cap", id: "Topi Racing Club" }, meta: { en: "Black cap", id: "Topi hitam" }, price: 85000, place: "rail", img: "/img/cap-racing-club.webp", cutout: true },
+  { id: "patch-energized", name: { en: "Patch, Always Energized", id: "Patch, Always Energized" }, meta: { en: "Chest patch, E21 car", id: "Patch dada, mobil E21" }, price: 85000, place: "shelf", img: "/img/patch-energized.webp", cutout: true },
   { id: "tumbler", name: { en: "Tumbler", id: "Tumbler" }, meta: { en: "Stainless steel · 500 ml", id: "Baja tahan karat · 500 ml" }, price: 45000, place: "shelf", img: "/img/tumbler.webp" },
   { id: "sticker-pack", name: { en: "Sticker pack", id: "Paket stiker" }, meta: { en: "One sheet, 6 stickers", id: "Satu lembar, 6 stiker" }, price: 10000, place: "shelf", img: "/img/sticker-sheet.webp", cutout: true },
   { id: "keychain-chibi", name: { en: "Keychain, Bali chibi", id: "Gantungan kunci, chibi Bali" }, meta: { en: "Acrylic", id: "Akrilik" }, price: 15000, place: "hooks", img: "/img/keychain-chibi.webp", cutout: true, ring: 50.3 },

@@ -245,7 +245,7 @@ reduced.addEventListener("change", () => render(shown));
 requestAnimationFrame(ripple);
 
 // ---------- merch pilihan (section 03): data dari products.ts, kartu ke /shop ----------
-const FEATURED = ["tee-night", "tee-sand", "keychain-chibi", "keychain-e21"];
+const FEATURED = ["shirt-night", "tee-sand", "keychain-chibi", "keychain-e21"];
 const merch = document.getElementById("merch-grid")!;
 const arrow = `<svg viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M2 10 10 2M4 2h6v6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>`;
 onLang(() => {

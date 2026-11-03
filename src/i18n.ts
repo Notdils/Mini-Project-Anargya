@@ -86,8 +86,8 @@ const DICT = {
   // ---------- toko ----------
   "shop.title": { en: "Bali Edition shop · Anargya", id: "Toko Bali Edition · Anargya" },
   "shop.desc": {
-    en: "Bali Edition tees, hats and accessories from Anargya ITS EV Team at GIIAS Bali 2027. Every sale helps fund the 2027 season.",
-    id: "Kaos, topi, dan aksesori Bali Edition dari Anargya ITS EV Team di GIIAS Bali 2027. Setiap pembelian membantu mendanai musim 2027.",
+    en: "Bali Edition shirts, tees, patches and accessories from Anargya ITS EV Team at GIIAS Bali 2027. Every sale helps fund the 2027 season.",
+    id: "Kemeja, kaos, patch, dan aksesori Bali Edition dari Anargya ITS EV Team di GIIAS Bali 2027. Setiap pembelian membantu mendanai musim 2027.",
   },
   "shop.sub1": { en: "Bali Edition stall · GIIAS Bali 2027", id: "Lapak Bali Edition · GIIAS Bali 2027" },
   "shop.sub2": { en: "Every sale helps fund the 2027 season", id: "Setiap pembelian membantu mendanai musim 2027" },

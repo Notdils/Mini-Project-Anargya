@@ -237,9 +237,21 @@
   left: 50%;
   bottom: 100%;
   width: 2px;
-  height: 40px;
+  height: var(--str, 40px);
   margin-left: -1px;
   background: var(--kraft);
+}
+/* cutout di rel & kait: tali mulai dari tengah gambar (di belakangnya), bukan dari tepi bawah */
+.products--rail .card--cutout,
+.products--hooks .card--cutout {
+  position: relative;
+  z-index: 1;
+}
+.products--rail .card--cutout + .tag {
+  --str: 175px; /* margin tag 40 + setengah tinggi kartu 270 */
+}
+.products--hooks .card--cutout + .tag {
+  --str: 150px; /* margin tag 40 + setengah tinggi kartu 220 */
 }
 .products--shelf .tag::before {
   height: 28px;
@@ -526,7 +538,7 @@
     animation: sway var(--dur, 3s) ease-in-out var(--delay, 0s) infinite alternate;
   }
   .tag {
-    transform-origin: 50% -40px;
+    transform-origin: 50% calc(var(--str, 40px) * -1);
     animation: tag-sway calc(var(--dur, 3s) * 0.8) ease-in-out var(--delay, 0s) infinite alternate;
   }
   .products--shelf .tag {
@@ -581,6 +593,9 @@
   .products--rail .card {
     width: 200px;
     height: 230px;
+  }
+  .products--rail .card--cutout + .tag {
+    --str: 155px;
   }
   .products--shelf {
     grid-template-columns: repeat(2, 1fr);
